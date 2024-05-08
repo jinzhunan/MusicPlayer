@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import jsmediatags from 'jsmediatags/dist/jsmediatags.min';
 
+import './CloudinaryTest'
 
 
 function MusicUpload() {
@@ -75,7 +76,12 @@ function MusicUpload() {
             {thumbnailUrl && <img style={{ width: '100px', height: '100px' }} src={thumbnailUrl} alt="Thumbnail" />}
             <button type="submit">Upload</button>
         </form>
+      
+
       </div>
+
+
+
     );
 }
 

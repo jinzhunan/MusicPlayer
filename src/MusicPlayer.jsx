@@ -22,7 +22,7 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
       <audio controls={isPlaying}>
         <source src={audioUrl} />
       </audio>
-      <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+      <button className="play-button" onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
     </div>
 
   );

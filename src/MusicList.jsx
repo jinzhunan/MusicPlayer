@@ -17,6 +17,7 @@ function MusicList() {
                 setMusicList(response.data);
             } catch (error) {
                 console.error('Failed to fetch music list:', error);
+                alert('Failed to fetch music list:', {error});
             }
         };
         fetchMusicList();

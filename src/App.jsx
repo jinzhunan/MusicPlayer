@@ -5,6 +5,8 @@ import './App.css'
 import MusicList from './MusicList'
 import CloudinaryTest from './CloudinaryTest'
 
+import MusicPlayerBot from './MuaicPlayerBot'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,11 +26,14 @@ function App() {
 
         <MusicList></MusicList>
         <CloudinaryTest></CloudinaryTest>
+        
+        <MusicPlayerBot></MusicPlayerBot>
 
       </div>
       <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        
     </>
   )
 }

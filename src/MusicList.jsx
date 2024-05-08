@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MusicPlayer from './MusicPlayer';
-import ImageDisplay from './ImageDisplay';
+import './MusicPlayer'
 
 
 function MusicList() {
@@ -26,7 +26,7 @@ function MusicList() {
 
 
     return (
-        <div>
+        <div  className="image-gallery">
                 {musicList.map((music) => (
                     <MusicPlayer key={music._id}
                         title={music.title}

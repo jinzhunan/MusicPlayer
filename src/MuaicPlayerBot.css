@@ -1,0 +1,39 @@
+/* MusicPlayer.css */
+
+.music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .controls button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .progress-bar {
+    height: 5px;
+    background-color: #ccc;
+    margin-top: 5px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #007bff;
+    width: 50%; /* 初始进度为50% */
+  }
+  

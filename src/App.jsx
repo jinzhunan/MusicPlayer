@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import MusicPlayer from './MusicPlayer'
+import MusicList from './MusicList'
 import CloudinaryTest from './CloudinaryTest'
 
 function App() {
@@ -18,21 +18,17 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>MusicPlaer</h1>
+      <h3>programer: JASON</h3>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        {/* <MusicPlayer></MusicPlayer> */}
+
+        <MusicList></MusicList>
         <CloudinaryTest></CloudinaryTest>
 
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
     </>
   )
 }

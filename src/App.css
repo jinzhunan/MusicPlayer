@@ -5,6 +5,19 @@
   text-align: center;
 }
 
+.app {
+  background-image: url('././assets/pic01.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* 设置高度为视口高度，使背景图片铺满整个屏幕 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,7 +47,7 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 6em;
 }
 
 .read-the-docs {

@@ -37,6 +37,12 @@
     border-radius: 50%;
     margin-bottom: 20px;
   }
+  .cover-image-bot img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding-right: 10px;
+  }
   
   .info {
     text-align: center;
@@ -56,3 +62,46 @@
     background-color: #1ed760;
   }
   
+
+  /* 底部Plaer */
+.music-player-bot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 98%;
+  background-color: #f5f5f5;
+  padding: 10px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls-bot {
+  display: flex;
+  align-items: center;
+}
+
+.controls-bot button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.progress-bar-bot {
+  height: 5px;
+  background-color: #ccc;
+  margin-top: 5px;
+  width: 98%;
+}
+
+.progress-bot {
+  height: 100%;
+  background-color: #007bff;
+  width: 0%;
+}
+
+.width-bot{
+  padding-left: 0.5em;
+}

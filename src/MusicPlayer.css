@@ -37,11 +37,20 @@
     border-radius: 50%;
     margin-bottom: 20px;
   }
+
+
   .cover-image-bot img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     padding-right: 10px;
+  }
+  .cover-play-bot img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: auto;
+    margin: auto;
   }
   
   .info {
@@ -83,7 +92,7 @@
   margin-right: 10px;
   padding: 5px 10px;
   border: none;
-  background-color: #007bff;
+  background-color: #2cbb5e;
   color: #fff;
   border-radius: 4px;
   cursor: pointer;

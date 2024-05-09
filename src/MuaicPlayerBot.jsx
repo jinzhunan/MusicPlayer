@@ -5,6 +5,8 @@ import { DataContext } from './DataContext';
 import './MusicPlayer'
 import ImageDisplay from './ImageDisplay'
 import ImageHead from './assets/head.jpeg'
+import ImagePlay from './assets/pause.png'
+import ImagePause from './assets/play.webp'
 
 
 const MusicPlayerBot = () => {
@@ -78,13 +80,24 @@ const MusicPlayerBot = () => {
        
         ref={audioRef} 
         src={musicSingle === null ? '' : musicSingle.audioUrl} loop></audio>
-      <div className="controls-bot">
+      <div style={{ display: 'flex', justifyContent: 'center' }} className="controls-bot">
         <div className="cover-image-bot">
             <ImageDisplay  base64Image={musicSingle === null ? ImageHead : musicSingle.coverImageUrl}  />
         </div>
-        <button  onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <button style={{ display: 'grid', placeItems: 'center' }} onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
         <h3>{musicSingle === null ? 'Title' : musicSingle.title}</h3>
         <p className="width-bot">{musicSingle === null ? 'Artist' : musicSingle.artist}</p>
+
+        {/* <button  onClick={togglePlay}>
+          {isPlaying ? 
+            <div className='cover-play-bot'>
+              <img src={ImagePlay}/>
+            </div>
+          : <div className='cover-play-bot'>
+              <img src={ImagePause}/>
+            </div>}
+        </button> */}
+
       </div>
         {/* <div className="progress-bot" style={{ width: `${progress}%` }}></div> */}
         <input

@@ -116,6 +116,8 @@
 }
 
 .bold-p{
-  /* font-size: 12px; */
-  font-weight: 700;
+  margin: 0;
+}
+.unbold-p{
+  margin-top: 5px;
 }

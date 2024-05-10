@@ -117,6 +117,7 @@
 
 .bold-p{
   margin: 0;
+  font-weight: bold;
 }
 .unbold-p{
   margin-top: 5px;

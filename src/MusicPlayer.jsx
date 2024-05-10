@@ -28,8 +28,8 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
               <ImageDisplay  base64Image={coverImageUrl}  />
             </div>
             <div className="info">
-              <h5 className='bold-p'>{title}</h5>
-              <p className='unbold-p'>{artist}</p>
+              <p className='bold-p'>{title}</p>
+              <p >{artist}</p>
             </div>
             {/* <audio>
               <source src={audioUrl} />

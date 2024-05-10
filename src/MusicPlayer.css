@@ -114,3 +114,8 @@
 .width-bot{
   padding-left: 0.5em;
 }
+
+.bold-p{
+  /* font-size: 12px; */
+  font-weight: bold;
+}

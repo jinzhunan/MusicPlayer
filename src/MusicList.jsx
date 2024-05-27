@@ -10,10 +10,11 @@ function MusicList() {
     const [pageNumber, setPageNumber] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [musicList, setMusicList] = useState([]);
-    const [language, setLanguage] = useState('');
+    const [language, setLanguage] = useState('all');
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+
         async function fetchMusicList() {
             try {
                 setLoading(true); // 设置加载状态为 true
@@ -31,6 +32,11 @@ function MusicList() {
 
         fetchMusicList();
     }, [pageNumber, language]);
+
+    useEffect(() => {
+        // 当 language 变化时，将 pageNumber 重置为 1
+        setPageNumber(1);
+    }, [language]);
 
     const handleNextPage = () => {
         setPageNumber(prevPageNumber => prevPageNumber + 1);

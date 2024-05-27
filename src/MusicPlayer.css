@@ -11,6 +11,12 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.image-containerNav {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 .image-container img {
   width: 100%;
@@ -57,6 +63,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
+  
   
   .play-button {
     padding: 10px 20px;

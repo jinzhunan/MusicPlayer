@@ -52,7 +52,7 @@ function MusicList() {
 
     return (
         <>
-            <div className="image-container" >
+            <div className="image-containerNav" >
                 <div className="info">
                     <button onClick={() => handleLanguage('all')} className='bold-p'>all</button>
                     <button onClick={() => handleLanguage('english_anime')} className='bold-p'>english_anime</button>

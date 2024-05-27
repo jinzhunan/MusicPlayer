@@ -7,6 +7,7 @@ import MusicList from './MusicList'
 import CloudinaryTest from './CloudinaryTest'
 
 import MusicPlayerBot from './MuaicPlayerBot'
+import MusicNavigate from './MusicNavigate';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,7 +19,7 @@ function App() {
         <h3>programer: JASON</h3>
       </div>
       <div className="card">
-
+        {/* <MusicNavigate></MusicNavigate> */}
         <MusicList></MusicList>
         <CloudinaryTest></CloudinaryTest>
         

@@ -10,6 +10,8 @@ function MusicUpload() {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [thumbnailUrl, setThumbnailUrl] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('');
+
 
 
     const handleFileChange = async (event) => {
@@ -48,6 +50,7 @@ function MusicUpload() {
         formData.append('public_id', title);
         formData.append('artist', artist);
         formData.append('thumbnailUrl', thumbnailUrl);
+        formData.append('language', selectedOption);
 
         try {
             const response = await axios.post('https://api.cloudinary.com/v1_1/dhhuemjhf/raw/upload', formData);
@@ -57,7 +60,8 @@ function MusicUpload() {
                 musicUrl: response.data.secure_url,
                 title: title,
                 artist,
-                thumbnailUrl
+                thumbnailUrl,
+                language: selectedOption
             });
 
             alert('Upload successful');
@@ -69,13 +73,25 @@ function MusicUpload() {
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleFileChange} />
-            <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <input type="text" placeholder="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
-            {thumbnailUrl && <img style={{ width: '100px', height: '100px' }} src={thumbnailUrl} alt="Thumbnail" />}
-            <button type="submit">Upload</button>
-        </form>
+<form onSubmit={handleSubmit}>
+    <input type="file" onChange={handleFileChange} />
+    <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+    <input type="text" placeholder="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
+    {thumbnailUrl && <img style={{ width: '100px', height: '100px' }} src={thumbnailUrl} alt="Thumbnail" />}
+    
+    <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+        <option value="">Select an option</option>
+        <option value="english_anime">english_anime</option>
+        <option value="japan">japan</option>
+        <option value="english">english</option>
+        <option value="chinese">chinese</option>
+        <option value="no_lyrics">no_lyrics</option>
+        <option value="forign">forign</option>
+    </select>
+
+    <button type="submit">Upload</button>
+</form>
+
       
 
       </div>

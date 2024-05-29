@@ -3,6 +3,7 @@ import ImageDisplay from './ImageDisplay'
 import './MusicPlayer.css'; // 导入样式文件
 import MusicPlayerBot from './MuaicPlayerBot';
 import { DataContext } from './DataContext';
+import { AppBar, Box, Typography, Button, Grid, Card, CardContent, CardMedia } from '@mui/material';
 
 
 function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
@@ -23,23 +24,40 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
   return (
 
         <>
-          <div className="image-container" >
-            <div className="cover-image">
-              <ImageDisplay  base64Image={coverImageUrl}  />
-            </div>
-            <div className="info">
-              <p className='bold-p'>{title}</p>
-              <p >{artist}</p>
-            </div>
-            {/* <audio>
-              <source src={audioUrl} />
-            </audio> */}
-            <button className="play-button" onClick={handleClick}>ADD</button>
-            <MusicPlayerBot data={data} />
-            <p>{data.title}</p>
-          </div>
+
+
+          <Grid item key={title} xs={12} sm={6} md={4}>
+            <Card>
+            <Box
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  height="140px"
+                >
+                  <CardMedia
+                    component="img"
+                    src={coverImageUrl}
+                    sx={{ width: 140, height: 140, borderRadius: '50%' }}
+                  />
+                </Box>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  {title} 
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {artist}
+                </Typography>
+                <Box mt={2} display="flex" justifyContent="center">
+                  <Button variant="contained" color="primary">
+                    ADD
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
 
         </>
+        
 
 
 

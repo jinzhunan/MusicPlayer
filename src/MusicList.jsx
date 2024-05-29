@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import MusicPlayer from './MusicPlayer';
 import './MusicPlayer.css';
+import { AppBar, Toolbar, Typography, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
+
 
 function MusicList() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -66,17 +68,18 @@ function MusicList() {
 
             {/* 显示加载状态 */}
             {loading && <div>Loading...</div>}
-
-            <div className="image-gallery">
-                {musicList.map((music) => (
-                    <MusicPlayer key={music._id}
-                        title={music.title}
-                        artist={music.artist}
-                        coverImageUrl={music.thumbnailUrl}
-                        audioUrl={music.musicUrl}
-                    />
-                ))}
-            </div>
+            <Container sx={{ mt: 4 }}>
+                <Grid  container spacing={4}>
+                    {musicList.map((music) => (
+                        <MusicPlayer key={music._id}
+                            title={music.title}
+                            artist={music.artist}
+                            coverImageUrl={music.thumbnailUrl}
+                            audioUrl={music.musicUrl}
+                        />
+                    ))}
+                </Grid >
+            </Container>
             <div>
                 <button onClick={handlePrevPage} disabled={pageNumber === 1}>
                     Pre Page

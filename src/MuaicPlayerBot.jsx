@@ -1,50 +1,28 @@
-// MusicPlayer.js
-
 import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from './DataContext';
-import './MusicPlayer'
-import ImageDisplay from './ImageDisplay'
-import ImageHead from './assets/head.jpeg'
-import ImagePlay from './assets/pause.png'
-import ImagePause from './assets/play.webp'
-
+import { IconButton, Slider, Typography, Box } from '@mui/material';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import ImageDisplay from './ImageDisplay';
+import ImageHead from './assets/head.jpeg';
 
 const MusicPlayerBot = () => {
-    const {musicSingle} = useContext(DataContext);
+  const { musicSingle } = useContext(DataContext);
 
-    const [isPlaying, setIsPlaying] = useState(true);
-    const [progress, setProgress] = useState(0);
-    
-    const audioRef = React.createRef();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
 
-    
+  const audioRef = React.createRef();
 
-    const togglePlay = () => {
-        setIsPlaying(!isPlaying);
-        console.log(isPlaying)
-    };
-    // useEffect(() => {
-    //     setIsPlaying(true);
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
 
-    //   }, []);
-    
-    
-    const handleProgressChange = (e) => {
-
-        const audio = audioRef.current;
-        let newProgress = parseInt(e.target.value);
-        setProgress(newProgress);
-        audio.currentTime = (newProgress / 100) * audio.duration;
-      };
-
-    useEffect(() => {
-        const audio = audioRef.current;
-
-        setIsPlaying(false)
-        // audio.play()
-      }, [musicSingle]);
-
-
+  const handleProgressChange = (event, newValue) => {
+    const audio = audioRef.current;
+    setProgress(newValue);
+    audio.currentTime = (newValue / 100) * audio.duration;
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -54,7 +32,6 @@ const MusicPlayerBot = () => {
     } else {
       audio.pause();
     }
-    
   }, [isPlaying]);
 
   useEffect(() => {
@@ -74,41 +51,63 @@ const MusicPlayerBot = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    // Automatically play music when a new musicSingle is set
+    if (musicSingle) {
+      setIsPlaying(true);
+    }
+
+    // Reset progress to 0 when a new musicSingle is set
+    setProgress(0);
+
+    // Reset audio duration when a new musicSingle is set
+    audio.load();
+
+  }, [musicSingle]);
+
   return (
-    <div className="music-player-bot">
-      <audio 
-       
-        ref={audioRef} 
-        src={musicSingle === null ? '' : musicSingle.audioUrl} loop></audio>
-      <div style={{ display: 'flex', justifyContent: 'center' }} className="controls-bot">
+    <div className="music-player-bot" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#f0f8ff', padding: '10px', boxShadow: '0px -2px 5px rgba(0, 0, 0, 0.1)', zIndex: 9999 }}>
+      <audio ref={audioRef} src={musicSingle ? musicSingle.audioUrl : ''} autoPlay loop />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="controls-bot">
         <div className="cover-image-bot">
-            <ImageDisplay  base64Image={musicSingle === null ? ImageHead : musicSingle.coverImageUrl}  />
+          <ImageDisplay base64Image={musicSingle ? musicSingle.coverImageUrl : ImageHead} />
         </div>
-        <button style={{ display: 'grid', placeItems: 'center' }} onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
-        <h3>{musicSingle === null ? 'Title' : musicSingle.title}</h3>
-        <p className="width-bot">{musicSingle === null ? 'Artist' : musicSingle.artist}</p>
-
-        {/* <button  onClick={togglePlay}>
-          {isPlaying ? 
-            <div className='cover-play-bot'>
-              <img src={ImagePlay}/>
-            </div>
-          : <div className='cover-play-bot'>
-              <img src={ImagePause}/>
-            </div>}
-        </button> */}
-
+        <IconButton
+          onClick={togglePlay}
+          sx={{
+            display: 'grid',
+            placeItems: 'center',
+            color: '#003366',
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+            '&:active': {
+              backgroundColor: 'transparent',
+            },
+            '& svg': {
+              fontSize: '2rem', // Increase icon size
+            },
+          }}
+        >
+          {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+        </IconButton>
+        <div style={{ marginLeft: '10px', marginRight: '10px' }}>
+          <Typography variant="h6">{musicSingle ? musicSingle.title : 'Title'}</Typography>
+          <Typography variant="body1" className="width-bot">{musicSingle ? musicSingle.artist : 'Artist'}</Typography>
+        </div>
       </div>
-        {/* <div className="progress-bot" style={{ width: `${progress}%` }}></div> */}
-        <input
-        type="range"
-        value={isNaN(progress) ? 0 : progress}
-        onChange={handleProgressChange}
-        min="0"
-        max="100"
-        step="1"
-        className="progress-bar-bot"
-      />
+      <Box sx={{ width: '80%', mx: 'auto', marginTop: '10px' }}>
+        <Slider
+          value={isNaN(progress) ? 0 : progress}
+          onChange={handleProgressChange}
+          aria-labelledby="continuous-slider"
+          min={0}
+          max={100}
+          valueLabelDisplay="auto"
+        />
+      </Box>
     </div>
   );
 };

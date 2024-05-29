@@ -1,7 +1,6 @@
 import React, { useState, useContext  } from 'react';
 import ImageDisplay from './ImageDisplay'
 import './MusicPlayer.css'; // 导入样式文件
-import MusicPlayerBot from './MuaicPlayerBot';
 
 
 function MusicNavigate() {

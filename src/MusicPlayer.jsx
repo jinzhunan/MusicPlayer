@@ -1,3 +1,4 @@
+
 import React, { useState, useContext  } from 'react';
 import ImageDisplay from './ImageDisplay'
 import './MusicPlayer.css'; // 导入样式文件
@@ -48,14 +49,13 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
                   {artist}
                 </Typography>
                 <Box mt={2} display="flex" justifyContent="center">
-                  <Button variant="contained" color="primary">
-                    ADD
+                  <Button onClick={handleClick} variant="contained" color="primary">
+                    Play
                   </Button>
                 </Box>
               </CardContent>
             </Card>
           </Grid>
-
         </>
         
 
@@ -65,3 +65,4 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
 }
 
 export default MusicPlayer;
+

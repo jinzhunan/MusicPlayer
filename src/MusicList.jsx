@@ -1,12 +1,14 @@
 
 // 'https://necessary-shrub-soursop.glitch.me/music'
+// 'Rock', 'Pop', 'Jazz', 'Classical', 'Hip-Hop', 'Country', 'Electronic', 'R&B', 'Blues', 'Reggae'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MusicPlayer from './MusicPlayer';
 import './MusicPlayer.css';
-import { AppBar, Toolbar, Typography, Container, Grid, Card, CardContent, CardMedia } from '@mui/material';
-
+import {Container, AppBar, Toolbar, Typography, Button, IconButton, Tabs, Tab, Box, Drawer, List, ListItem, ListItemText,Grid } from '@mui/material';
+import MusicNavigate from './MusicNavigate';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function MusicList() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -14,6 +16,11 @@ function MusicList() {
     const [musicList, setMusicList] = useState([]);
     const [language, setLanguage] = useState('all');
     const [loading, setLoading] = useState(false);
+
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [tabValue, setTabValue] = useState(0);
+  
+  
 
     useEffect(() => {
 
@@ -40,6 +47,30 @@ function MusicList() {
         setPageNumber(1);
     }, [language]);
 
+
+    const toggleDrawer = (open) => () => {
+        setDrawerOpen(open);
+      };
+    
+      const handleTabChange = (event, newValue) => {
+        if(newValue == 0){
+            setLanguage('all')
+        }else if(newValue == 1){
+            setLanguage('english_anime')
+        }else if(newValue == 2){
+            setLanguage('japan')
+        }else if(newValue == 3){
+            setLanguage('english')
+        }else if(newValue == 4){
+            setLanguage('chinese')
+        }else if(newValue == 5){
+            setLanguage('no_lyrics')
+        }else if(newValue == 6){
+            setLanguage('forign')
+        }
+        setTabValue(newValue);
+      };
+
     const handleNextPage = () => {
         setPageNumber(prevPageNumber => prevPageNumber + 1);
     };
@@ -48,22 +79,53 @@ function MusicList() {
         setPageNumber(prevPageNumber => Math.max(prevPageNumber - 1, 1));
     };
 
-    const handleLanguage = (inputLanguage) => {
-        setLanguage(inputLanguage);
-    };
+
+
+
+    const drawerList = (
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <List>
+            {['Home', 'About', 'Services', 'Contact'].map((text) => (
+              <ListItem button key={text}>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      );
 
     return (
         <>
-            <div className="image-containerNav" >
-                <div className="info">
-                    <button onClick={() => handleLanguage('all')} className='bold-p'>all</button>
-                    <button onClick={() => handleLanguage('english_anime')} className='bold-p'>english_anime</button>
-                    <button onClick={() => handleLanguage('japan')} className='bold-p'>japan</button>
-                    <button onClick={() => handleLanguage('english')} className='bold-p'>english</button>
-                    <button onClick={() => handleLanguage('chinese')} className='bold-p'>chinese</button>
-                    <button onClick={() => handleLanguage('no_lyrics')} className='bold-p'>no_lyrics</button>
-                    <button onClick={() => handleLanguage('forign')} className='bold-p'>forign</button>
-                </div>
+
+
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        MusicPlayer
+                    </Typography>
+                    <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
+                <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+                    {drawerList}
+                </Drawer>
+                <AppBar position="static" color="default">
+                    <Tabs value={tabValue} onChange={handleTabChange} centered>
+                    {['all','english_anime','japan','english','chinese','no_lyrics','forign'].map((category, index) => (
+                        <Tab label={category} key={index} />
+                    ))}
+                    </Tabs>
+                </AppBar>
+    
             </div>
 
             {/* 显示加载状态 */}
@@ -80,15 +142,15 @@ function MusicList() {
                     ))}
                 </Grid >
             </Container>
-            <div>
-                <button onClick={handlePrevPage} disabled={pageNumber === 1}>
-                    Pre Page
-                </button>
-                <span>{pageNumber}/{totalPages}</span>
-                <button onClick={handleNextPage} disabled={pageNumber === totalPages}>
-                    Next Page
-                </button>
-            </div>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2 }}>
+                <Button variant="contained" color="primary" onClick={handlePrevPage} disabled={pageNumber === 1}>
+                Pre Page
+                </Button>
+                <Typography variant="body1" sx={{ mx: 2 }}>{pageNumber}/{totalPages}</Typography>
+                <Button variant="contained" color="primary" onClick={handleNextPage} disabled={pageNumber === totalPages}>
+                Next Page
+                </Button>
+            </Box>
         </>
     );
 }

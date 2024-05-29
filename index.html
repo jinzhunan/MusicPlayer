@@ -1,13 +1,26 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JasonMusic</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JasonMusic</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ADD8E6, #D8BFD8); /* 淡蓝色到淡紫色的渐变 */
+      margin: 0;
+      padding: 0;
+      animation: gradientBackground 10s infinite alternate; /* 使用动画效果 */
+    }
+
+    @keyframes gradientBackground {
+      from { background-color: #ADD8E6; } /* 开始颜色 */
+      to { background-color: #D8BFD8; } /* 结束颜色 */
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>

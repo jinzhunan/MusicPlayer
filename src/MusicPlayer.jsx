@@ -38,7 +38,7 @@ function MusicPlayer({ title, artist, coverImageUrl, audioUrl }) {
                   <CardMedia
                     component="img"
                     src={coverImageUrl}
-                    sx={{ width: 140, height: 140, borderRadius: '50%' }}
+                    sx={{ width: 140, height: 140, paddingTop:'15px', borderRadius: '50%' }}
                   />
                 </Box>
               <CardContent>

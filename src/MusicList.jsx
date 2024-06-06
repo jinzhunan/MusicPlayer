@@ -24,7 +24,9 @@ import MusicPlayer from './MusicPlayer';
 import './MusicPlayer.css';
 import MenuIcon from '@mui/icons-material/Menu';
 
+
 function MusicList() {
+
     const [pageNumber, setPageNumber] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [musicList, setMusicList] = useState([]);
@@ -109,13 +111,24 @@ function MusicList() {
                 <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
                     {drawerList}
                 </Drawer>
-                <AppBar position="static" color="default">
-                    <Tabs value={tabValue} onChange={handleTabChange} centered>
-                        {['all', 'english_anime', 'japan', 'english', 'chinese', 'no_lyrics', 'forign'].map((category, index) => (
-                            <Tab label={category} key={index} />
-                        ))}
-                    </Tabs>
-                </AppBar>
+                <div className="root">
+            <div className="tabs-container">
+            <div style={{ backgroundColor: '#f5f5f5', padding: '10px 0' }}>
+                <Tabs
+                    value={tabValue}
+                    onChange={handleTabChange}
+                    className="tabs"
+                    centered={false}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                >
+                    {['all', 'english_anime', 'japan', 'english', 'chinese', 'no_lyrics', 'foreign'].map((category, index) => (
+                    <Tab label={category} key={index} className="tab" />
+                    ))}
+                </Tabs>
+                </div>
+            </div>
+        </div>
             </div>
 
             {loading && <CircularProgress sx={{ margin: '20px' }} />} {/* 显示加载状态 */}

@@ -1,0 +1,35 @@
+.root {
+    flex-grow: 1;
+}
+
+.tabs-container {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    overflow-x: auto;
+    min-width: 100%; /* 设置容器的最小宽度为100% */
+}
+
+.tab {
+    flex-shrink: 0;
+    min-width: 120px; /* 设置每个标签的最小宽度 */
+    white-space: nowrap; /* 禁止文本换行 */
+    padding: 6px 16px; /* 调整标签的内边距 */
+}
+
+.tabs {
+    background-color: #f5f5f5;
+  }
+  
+  .tab {
+    min-width: 100px;
+    text-transform: none;
+  }
+  
+  /* 调整小屏幕上的标签样式 */
+  @media (max-width: 600px) {
+    .tab {
+      min-width: auto;
+      flex-grow: 1;
+    }
+  }
+  

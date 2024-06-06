@@ -134,7 +134,7 @@ function MusicList() {
             {loading && <CircularProgress sx={{ margin: '20px' }} />} {/* 显示加载状态 */}
             {!loading && (
                 <Container sx={{ mt: 4 }}>
-                    <Grid container spacing={4}>
+                    <Grid container spacing={1}>
                         {musicList.map((music) => (
                             <MusicPlayer key={music._id}
                                 title={music.title}

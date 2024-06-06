@@ -69,46 +69,46 @@ const MusicPlayerBot = () => {
 
   return (
     <div className="music-player-bot" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#f0f8ff', padding: '10px', boxShadow: '0px -2px 5px rgba(0, 0, 0, 0.1)', zIndex: 9999 }}>
-      <audio ref={audioRef} src={musicSingle ? musicSingle.audioUrl : ''} autoPlay loop />
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="controls-bot">
-        <div className="cover-image-bot">
-          <ImageDisplay base64Image={musicSingle ? musicSingle.coverImageUrl : ImageHead} />
-        </div>
-        <IconButton
-          onClick={togglePlay}
-          sx={{
-            display: 'grid',
-            placeItems: 'center',
-            color: '#003366',
-            '&:hover': {
-              backgroundColor: 'transparent',
-            },
-            '&:active': {
-              backgroundColor: 'transparent',
-            },
-            '& svg': {
-              fontSize: '2rem', // Increase icon size
-            },
-          }}
-        >
-          {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-        </IconButton>
-        <div style={{ marginLeft: '10px', marginRight: '10px' }}>
-          <Typography variant="h6">{musicSingle ? musicSingle.title : 'Title'}</Typography>
-          <Typography variant="body1" className="width-bot">{musicSingle ? musicSingle.artist : 'Artist'}</Typography>
-        </div>
+    <audio ref={audioRef} src={musicSingle ? musicSingle.audioUrl : ''} autoPlay loop />
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="controls-bot">
+      <div className="cover-image-bot" style={{  width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden' }}>
+        <ImageDisplay base64Image={musicSingle ? musicSingle.coverImageUrl : ImageHead} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
-      <Box sx={{ width: '80%', mx: 'auto', marginTop: '10px' }}>
-        <Slider
-          value={isNaN(progress) ? 0 : progress}
-          onChange={handleProgressChange}
-          aria-labelledby="continuous-slider"
-          min={0}
-          max={100}
-          valueLabelDisplay="auto"
-        />
-      </Box>
+      <IconButton
+        onClick={togglePlay}
+        sx={{
+          display: 'grid',
+          placeItems: 'center',
+          color: '#003366',
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+          '&:active': {
+            backgroundColor: 'transparent',
+          },
+          '& svg': {
+            fontSize: '2rem', // Increase icon size
+          },
+        }}
+      >
+        {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+      </IconButton>
+      <div style={{ marginLeft: '10px', marginRight: '10px' }}>
+        <Typography variant="h6">{musicSingle ? musicSingle.title : 'Title'}</Typography>
+        <Typography variant="body1" className="width-bot">{musicSingle ? musicSingle.artist : 'Artist'}</Typography>
+      </div>
     </div>
+    <Box sx={{ width: '80%', mx: 'auto', marginTop: '10px' }}>
+      <Slider
+        value={isNaN(progress) ? 0 : progress}
+        onChange={handleProgressChange}
+        aria-labelledby="continuous-slider"
+        min={0}
+        max={100}
+        valueLabelDisplay="auto"
+      />
+    </Box>
+  </div>
   );
 };
 

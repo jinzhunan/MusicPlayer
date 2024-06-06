@@ -71,7 +71,7 @@ const MusicPlayerBot = () => {
     <div className="music-player-bot" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#f0f8ff', padding: '10px', boxShadow: '0px -2px 5px rgba(0, 0, 0, 0.1)', zIndex: 9999 }}>
     <audio ref={audioRef} src={musicSingle ? musicSingle.audioUrl : ''} autoPlay loop />
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="controls-bot">
-      <div className="cover-image-bot" style={{  width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden' }}>
+      <div className="cover-image-bot" style={{  width: '100px', height: '100px', overflow: 'hidden' }}>
         <ImageDisplay base64Image={musicSingle ? musicSingle.coverImageUrl : ImageHead} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
       <IconButton
